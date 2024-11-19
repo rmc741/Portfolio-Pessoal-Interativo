@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Application.Handlers;
+using Application.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace IoC
@@ -7,6 +9,8 @@ namespace IoC
     {
         public static IServiceCollection AddInfrastructureApi(this IServiceCollection services)
         {
+            services.AddSingleton<IProjectHandler,ProjectHandler>();
+
             return services;
         }
 
