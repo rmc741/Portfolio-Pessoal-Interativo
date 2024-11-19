@@ -10,7 +10,9 @@ namespace Application.Interfaces
     public interface IProjectHandler
     {
         Task<ProjectDTO> CreateNewProjectHandler(ProjectDTO projectDTO);
-        Task<ProjectDTO> UpdateProjectHandler(ProjectDTO projectDTO);
+        Task<ProjectDTO> UpdateProjectHandler(Guid id, ProjectDTO projectDTO);
         Task DeleteProjectHandler(Guid id);
+        Task<ProjectDTO> GetProjectHandler(Guid id);
+        Task<List<ProjectDTO>> GetAllProjectsHandler();
     }
 }
