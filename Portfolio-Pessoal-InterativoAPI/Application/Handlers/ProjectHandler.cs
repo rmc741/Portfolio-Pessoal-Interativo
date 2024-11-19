@@ -1,10 +1,5 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Handlers
 {
@@ -20,7 +15,17 @@ namespace Application.Handlers
             throw new NotImplementedException("Função ainda não implementada!");
         }
 
-        public Task<ProjectDTO> UpdateProjectHandler(ProjectDTO projectDTO)
+        public Task<List<ProjectDTO>> GetAllProjectsHandler()
+        {
+            throw new NotImplementedException("Função ainda não implementada!");
+        }
+
+        public Task<ProjectDTO> GetProjectHandler(Guid id)
+        {
+            throw new NotImplementedException("Função ainda não implementada!");
+        }
+
+        public Task<ProjectDTO> UpdateProjectHandler(Guid id, ProjectDTO projectDTO)
         {
             throw new NotImplementedException("Função ainda não implementada!");
         }
