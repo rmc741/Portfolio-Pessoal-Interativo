@@ -1,33 +1,41 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
+using Application.Interfaces.Services;
 
 namespace Application.Handlers
 {
     public class ProjectHandler : IProjectHandler
     {
-        public Task<ProjectDTO> CreateNewProjectHandler(ProjectDTO projectDTO)
+        private readonly IProjectService _projectService;
+
+        public ProjectHandler(IProjectService projectService)
         {
-            throw new NotImplementedException("Criação de projeto ainda não implementada!!");
+            _projectService = projectService;
         }
 
-        public Task DeleteProjectHandler(Guid id)
+        public async Task<ProjectDTO> CreateNewProjectHandler(ProjectDTO projectDTO)
         {
-            throw new NotImplementedException("Função ainda não implementada!");
+            return await _projectService.CreateNewProject(projectDTO);
         }
 
-        public Task<List<ProjectDTO>> GetAllProjectsHandler()
+        public async Task DeleteProjectHandler(Guid id)
         {
-            throw new NotImplementedException("Função ainda não implementada!");
+            await _projectService.DeleteProjectAsync(id);
         }
 
-        public Task<ProjectDTO> GetProjectHandler(Guid id)
+        public async Task<List<ProjectDTO>> GetAllProjectsHandler()
         {
-            throw new NotImplementedException("Função ainda não implementada!");
+            return await _projectService.GetAllProjectsAsync();
+        }
+
+        public async Task<ProjectDTO> GetProjectHandler(Guid id)
+        {
+            return await _projectService.GetProjectByIdAsync(id);
         }
 
         public Task<ProjectDTO> UpdateProjectHandler(Guid id, ProjectDTO projectDTO)
         {
-            throw new NotImplementedException("Função ainda não implementada!");
+            return _projectService.UpdateProjectAsync(id, projectDTO);
         }
     }
 }
