@@ -51,13 +51,6 @@ Um projeto de portfólio com funcionalidades modernas para gerenciamento de proj
 ### Banco de Dados:
 - **PostgreSQL**
   - Otimizado com índices para melhorar desempenho em filtros.
-
-### Hospedagem:
-- **AWS**:
-  - API: **AWS Elastic Beanstalk** ou **AWS Lambda** (serverless)
-  - Banco: **Amazon RDS**
-  - Front-end: **Amazon S3 + CloudFront** (hospedagem estática)
-
 ---
 
 ## 🛡️ Melhorias Extras
@@ -93,16 +86,3 @@ Um projeto de portfólio com funcionalidades modernas para gerenciamento de proj
 5. Testar e refinar o sistema antes do lançamento.
 
 ---
-
-## 📚 Como Executar o Projeto
-
-### Pré-requisitos:
-- [.NET Core SDK](https://dotnet.microsoft.com/download)
-- [Node.js](https://nodejs.org/)
-- [PostgreSQL](https://www.postgresql.org/download/)
-- Conta na **AWS** (para hospedagem).
-
-### Passos:
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
