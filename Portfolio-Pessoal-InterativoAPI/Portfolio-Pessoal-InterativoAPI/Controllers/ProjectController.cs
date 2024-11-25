@@ -1,5 +1,5 @@
 ﻿using Application.DTOs;
-using Application.Interfaces;
+using Application.Interfaces.Handlers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Portfolio_Pessoal_InterativoAPI.Controllers
