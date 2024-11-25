@@ -1,4 +1,5 @@
-﻿using Application.DTOs;
+﻿using Application.CQRS.Commands;
+using Application.DTOs;
 using Application.Interfaces.Services;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
@@ -19,8 +20,9 @@ namespace Application.Services
         }
 
         //fazer o mapeamento aqui e as chamadas das funções do repository
-        public Task<ProjectDTO> CreateNewProject(ProjectDTO projectDTO)
+        public Task<ProjectDTO> CreateNewProject(ProjectCreateCommand request)
         {
+            //fazer o mapeamento entro o command e o dto aqui
             throw new NotImplementedException("Não implementado serviço para criar projeto");
         }
 
@@ -34,8 +36,9 @@ namespace Application.Services
             throw new NotImplementedException("Função para buscar por id ainda não implementado");
         }
 
-        public Task<ProjectDTO> UpdateProjectAsync(Guid id, ProjectDTO projectDTO)
+        public Task<ProjectDTO> UpdateProjectAsync(Guid id, ProjectUpdateCommand request)
         {
+            //fazer o mapeamento entro o command e o dto aqui
             throw new NotImplementedException("Função para editar projeto por id ainda não implementado");
         }
 
