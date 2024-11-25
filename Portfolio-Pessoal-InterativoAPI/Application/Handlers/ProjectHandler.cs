@@ -18,7 +18,18 @@ namespace Application.Handlers
 
         public async Task<ProjectDTO> CreateNewProjectHandler(ProjectDTO projectDTO)
         {
-            return await _projectService.CreateNewProject(projectDTO);
+            try
+            {
+                var project = await _projectService.CreateNewProject(projectDTO);
+
+                return project;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error CreateNewProjectHandler: " + ex);
+                throw;
+            }
+
         }
 
         public async Task DeleteProjectHandler(Guid id)
