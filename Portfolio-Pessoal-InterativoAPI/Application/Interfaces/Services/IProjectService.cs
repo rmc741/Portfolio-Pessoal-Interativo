@@ -1,4 +1,5 @@
-﻿using Application.DTOs;
+﻿using Application.CQRS.Commands;
+using Application.DTOs;
 
 namespace Application.Interfaces.Services
 {
@@ -6,8 +7,8 @@ namespace Application.Interfaces.Services
     {
         Task<List<ProjectDTO>> GetAllProjectsAsync();
         Task<ProjectDTO> GetProjectByIdAsync(Guid id);
-        Task<ProjectDTO> CreateNewProject(ProjectDTO projectDTO);
-        Task<ProjectDTO> UpdateProjectAsync(Guid id, ProjectDTO projectDTO);
+        Task<ProjectDTO> CreateNewProject(ProjectCreateCommand projectDTO);
+        Task<ProjectDTO> UpdateProjectAsync(Guid id, ProjectUpdateCommand projectDTO);
         Task DeleteProjectAsync(Guid id);
     }
 }

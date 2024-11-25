@@ -1,4 +1,5 @@
-﻿using Application.DTOs;
+﻿using Application.CQRS.Commands;
+using Application.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace Application.Interfaces.Handlers
 {
     public interface IProjectHandler
     {
-        Task<ProjectDTO> CreateNewProjectHandler(ProjectDTO projectDTO);
-        Task<ProjectDTO> UpdateProjectHandler(Guid id, ProjectDTO projectDTO);
+        Task<ProjectDTO> CreateNewProjectHandler(ProjectCreateCommand projectDTO);
+        Task<ProjectDTO> UpdateProjectHandler(Guid id, ProjectUpdateCommand projectDTO);
         Task DeleteProjectHandler(Guid id);
         Task<ProjectDTO> GetProjectHandler(Guid id);
         Task<List<ProjectDTO>> GetAllProjectsHandler();
