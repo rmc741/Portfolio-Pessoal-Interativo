@@ -18,7 +18,7 @@ namespace Application.DTOs
         public HashSet<string> Tags { get; set; } = new();
         public List<CommentDTO>? CommentsList { get; set; } = new();
         public List<ImageDTO>? ImagesList { get; set; } = new();
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }
