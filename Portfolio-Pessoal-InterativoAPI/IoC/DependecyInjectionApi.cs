@@ -1,6 +1,7 @@
 ﻿using Application.Handlers;
 using Application.Interfaces.Handlers;
 using Application.Interfaces.Services;
+using Application.Mappings;
 using Application.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,8 @@ namespace IoC
         {
             services.AddSingleton<IProjectHandler,ProjectHandler>();
             services.AddSingleton<IProjectService, ProjectService>();
+
+            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
             return services;
         }
