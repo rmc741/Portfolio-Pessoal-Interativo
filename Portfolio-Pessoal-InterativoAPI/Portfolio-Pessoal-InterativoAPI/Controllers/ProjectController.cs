@@ -1,4 +1,5 @@
-﻿using Application.DTOs;
+﻿using Application.CQRS.Commands;
+using Application.DTOs;
 using Application.Interfaces.Handlers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,16 +31,16 @@ namespace Portfolio_Pessoal_InterativoAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateNewProject([FromBody] ProjectDTO projectDTO)
+        public async Task<IActionResult> CreateNewProject([FromBody] ProjectCreateCommand request)
         {
-            var result = await _projectHandler.CreateNewProjectHandler(projectDTO);
+            var result = await _projectHandler.CreateNewProjectHandler(request);
             return Ok(result);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProject(Guid id, [FromBody] ProjectDTO projectDTO)
+        public async Task<IActionResult> UpdateProject(Guid id, [FromBody] ProjectUpdateCommand request)
         {
-            var result = await _projectHandler.UpdateProjectHandler(id,projectDTO);
+            var result = await _projectHandler.UpdateProjectHandler(id, request);
             return Ok(result);
         }
     }
