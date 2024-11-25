@@ -1,16 +1,19 @@
 ﻿using Application.DTOs;
-using Application.Interfaces;
+using Application.Interfaces.Handlers;
 using Application.Interfaces.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Handlers
 {
     public class ProjectHandler : IProjectHandler
     {
         private readonly IProjectService _projectService;
+        private readonly ILogger<ProjectHandler> _logger;
 
-        public ProjectHandler(IProjectService projectService)
+        public ProjectHandler(IProjectService projectService, ILogger<ProjectHandler> logger)
         {
             _projectService = projectService;
+            _logger = logger;
         }
 
         public async Task<ProjectDTO> CreateNewProjectHandler(ProjectDTO projectDTO)
