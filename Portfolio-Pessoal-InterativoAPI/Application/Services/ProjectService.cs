@@ -1,10 +1,24 @@
 ﻿using Application.DTOs;
 using Application.Interfaces.Services;
+using AutoMapper;
+using Microsoft.Extensions.Logging;
+using System.Runtime.CompilerServices;
 
 namespace Application.Services
 {
     public class ProjectService : IProjectService
     {
+        private readonly IMapper _mapper;
+        private readonly ILogger<ProjectService> _logger;
+        //private readonly IProjectRepository _projectRepository;
+
+        public ProjectService(IMapper mapper, ILogger<ProjectService> logger)
+        {
+            _mapper = mapper;
+            _logger = logger;
+        }
+
+        //fazer o mapeamento aqui e as chamadas das funções do repository
         public Task<ProjectDTO> CreateNewProject(ProjectDTO projectDTO)
         {
             throw new NotImplementedException("Não implementado serviço para criar projeto");
