@@ -1,4 +1,5 @@
-﻿using Application.DTOs;
+﻿using Application.CQRS.Commands;
+using Application.DTOs;
 using Application.Interfaces.Handlers;
 using Application.Interfaces.Services;
 using Microsoft.Extensions.Logging;
@@ -16,11 +17,11 @@ namespace Application.Handlers
             _logger = logger;
         }
 
-        public async Task<ProjectDTO> CreateNewProjectHandler(ProjectDTO projectDTO)
+        public async Task<ProjectDTO> CreateNewProjectHandler(ProjectCreateCommand request)
         {
             try
             {
-                var project = await _projectService.CreateNewProject(projectDTO);
+                var project = await _projectService.CreateNewProject(request);
 
                 return project;
             }
@@ -47,9 +48,9 @@ namespace Application.Handlers
             return await _projectService.GetProjectByIdAsync(id);
         }
 
-        public Task<ProjectDTO> UpdateProjectHandler(Guid id, ProjectDTO projectDTO)
+        public Task<ProjectDTO> UpdateProjectHandler(Guid id, ProjectUpdateCommand request)
         {
-            return _projectService.UpdateProjectAsync(id, projectDTO);
+            return _projectService.UpdateProjectAsync(id, request);
         }
     }
 }
