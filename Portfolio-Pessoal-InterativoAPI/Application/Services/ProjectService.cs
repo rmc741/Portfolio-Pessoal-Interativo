@@ -2,8 +2,8 @@
 using Application.DTOs;
 using Application.Interfaces.Services;
 using AutoMapper;
+using Domain.Interface.Repository;
 using Microsoft.Extensions.Logging;
-using System.Runtime.CompilerServices;
 
 namespace Application.Services
 {
@@ -11,12 +11,15 @@ namespace Application.Services
     {
         private readonly IMapper _mapper;
         private readonly ILogger<ProjectService> _logger;
-        //private readonly IProjectRepository _projectRepository;
+        private readonly IProjectRepository _projectRepository;
 
-        public ProjectService(IMapper mapper, ILogger<ProjectService> logger)
+        public ProjectService(IMapper mapper,
+            ILogger<ProjectService> logger,
+            IProjectRepository projectRepository)
         {
             _mapper = mapper;
             _logger = logger;
+            _projectRepository = projectRepository;
         }
 
         //fazer o mapeamento aqui e as chamadas das funções do repository
