@@ -29,9 +29,11 @@ namespace Application.Services
             throw new NotImplementedException("Não implementado serviço para criar projeto");
         }
 
-        public Task<List<ProjectDTO>> GetAllProjectsAsync()
+        public async Task<List<ProjectDTO>> GetAllProjectsAsync()
         {
-            throw new NotImplementedException("Função para pegar todos os projetos ainda não implementado");
+            var projetos = await _projectRepository.GetProjectsAsync();
+
+            throw new NotImplementedException("Não implementado serviço para buscar projetos");
         }
 
         public Task<ProjectDTO> GetProjectByIdAsync(Guid id)
