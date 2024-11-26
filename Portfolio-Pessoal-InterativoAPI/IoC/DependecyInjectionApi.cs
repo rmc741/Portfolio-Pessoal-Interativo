@@ -17,8 +17,8 @@ namespace IoC
         public static IServiceCollection AddInfrastructureApi(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"
-            ), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+             options.UseNpgsql(configuration.GetConnectionString("PortfolioDatabase"),
+             b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
             services.AddSingleton<IProjectHandler, ProjectHandler>();
             services.AddSingleton<IProjectService, ProjectService>();
