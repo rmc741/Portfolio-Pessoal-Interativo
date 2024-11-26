@@ -22,7 +22,7 @@ namespace Infra.Repository
 
         public Task<List<Project>> GetProjectsAsync()
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("Entrou no repository");
         }
 
         public Task<Project> UpdateProjectAsync(Guid id, Project project)
