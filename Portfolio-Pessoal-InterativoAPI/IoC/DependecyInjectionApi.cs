@@ -3,6 +3,8 @@ using Application.Interfaces.Handlers;
 using Application.Interfaces.Services;
 using Application.Mappings;
 using Application.Services;
+using Domain.Interface.Repository;
+using Infra.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,8 +14,9 @@ namespace IoC
     {
         public static IServiceCollection AddInfrastructureApi(this IServiceCollection services)
         {
-            services.AddSingleton<IProjectHandler,ProjectHandler>();
+            services.AddSingleton<IProjectHandler, ProjectHandler>();
             services.AddSingleton<IProjectService, ProjectService>();
+            services.AddSingleton<IProjectRepository, ProjectRepository>();
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
