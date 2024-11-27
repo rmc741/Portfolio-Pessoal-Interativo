@@ -23,10 +23,8 @@ namespace Application.Services
             _projectRepository = projectRepository;
         }
 
-        //fazer o mapeamento aqui e as chamadas das funções do repository
         public async Task<ProjectDTO> CreateNewProject(ProjectCreateCommand request)
         {
-            //fazer o mapeamento entro o command e o dto aqui
             var projectDTO = _mapper.Map<ProjectDTO>(request);
             var project = _mapper.Map<Project>(projectDTO);
             var newProject = _mapper.Map<ProjectDTO>(await _projectRepository.CreateNewProjectAsync(project));
@@ -47,7 +45,6 @@ namespace Application.Services
 
         public Task<ProjectDTO> UpdateProjectAsync(Guid id, ProjectUpdateCommand request)
         {
-            //fazer o mapeamento entro o command e o dto aqui
             throw new NotImplementedException("Função para editar projeto por id ainda não implementado");
         }
 
