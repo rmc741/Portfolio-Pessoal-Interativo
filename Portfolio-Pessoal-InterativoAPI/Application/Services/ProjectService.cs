@@ -2,6 +2,7 @@
 using Application.DTOs;
 using Application.Interfaces.Services;
 using AutoMapper;
+using Domain.Entities;
 using Domain.Interface.Repository;
 using Microsoft.Extensions.Logging;
 
@@ -23,10 +24,13 @@ namespace Application.Services
         }
 
         //fazer o mapeamento aqui e as chamadas das funções do repository
-        public Task<ProjectDTO> CreateNewProject(ProjectCreateCommand request)
+        public async Task<ProjectDTO> CreateNewProject(ProjectCreateCommand request)
         {
             //fazer o mapeamento entro o command e o dto aqui
-            throw new NotImplementedException("Não implementado serviço para criar projeto");
+            var projectDTO = _mapper.Map<ProjectDTO>(request);
+            var project = _mapper.Map<Project>(projectDTO);
+            var newProject = _mapper.Map<ProjectDTO>(await _projectRepository.CreateNewProjectAsync(project));
+            return newProject;
         }
 
         public async Task<List<ProjectDTO>> GetAllProjectsAsync()
