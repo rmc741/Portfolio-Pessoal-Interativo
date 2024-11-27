@@ -4,7 +4,7 @@ namespace Application.DTOs
 {
     public class ProjectDTO
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
         public string Name { get; set; }
@@ -18,7 +18,7 @@ namespace Application.DTOs
         public HashSet<string> Tags { get; set; } = new();
         public List<CommentDTO>? CommentsList { get; set; } = new();
         public List<ImageDTO>? ImagesList { get; set; } = new();
-        public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime? UpdatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

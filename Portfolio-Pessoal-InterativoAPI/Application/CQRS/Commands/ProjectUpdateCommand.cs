@@ -1,5 +1,6 @@
 ﻿using Application.DTOs;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Application.CQRS.Commands
 {
@@ -16,6 +17,8 @@ namespace Application.CQRS.Commands
         public string UrlGit { get; set; }
         public HashSet<string> Tags { get; set; } = new();
         public List<ImageDTO>? ImagesList { get; set; } = new();
+
+        [JsonIgnore]
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }
