@@ -1,13 +1,25 @@
 ﻿using Domain.Entities;
 using Domain.Interface.Repository;
+using Infra.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Repository
 {
     public class ProjectRepository : IProjectRepository
     {
-        public Task<Project> CreateNewProjectAsync(Project project)
+        private ApplicationDbContext _context;
+
+        public ProjectRepository(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+
+        public async Task<Project> CreateNewProjectAsync(Project project)
+        {
+            await _context.AddAsync(project);
+            await _context.SaveChangesAsync();
+            var savedProject = await _context.Projects.Where(d => project.Id == d.Id).FirstOrDefaultAsync();
+            return savedProject;
         }
 
         public Task DeleteProjectAsync(Guid id)

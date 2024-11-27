@@ -20,11 +20,11 @@ namespace IoC
              options.UseNpgsql(configuration.GetConnectionString("PortfolioDatabase"),
              b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
-            services.AddSingleton<IProjectHandler, ProjectHandler>();
-            services.AddSingleton<IProjectService, ProjectService>();
-            services.AddSingleton<IProjectRepository, ProjectRepository>();
+            services.AddScoped<IProjectHandler, ProjectHandler>();
+            services.AddScoped<IProjectService, ProjectService>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
 
-            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+            services.AddAutoMapper(typeof(MappingProfile));
 
             return services;
         }
