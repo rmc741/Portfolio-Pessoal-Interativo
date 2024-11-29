@@ -10,9 +10,10 @@ namespace Application.Mappings
         public MappingProfile()
         {
             CreateMap<Project, ProjectDTO>().ReverseMap();
+            CreateMap<ProjectUpdateCommand, Project>().ReverseMap();
 
-            CreateMap<ProjectCreateCommand, ProjectDTO>();
-            CreateMap<ProjectUpdateCommand, ProjectDTO>();
+            CreateMap<ProjectCreateCommand, ProjectDTO>().ReverseMap();
+            CreateMap<ProjectUpdateCommand, ProjectDTO>().ReverseMap();
         }
     }
 }
