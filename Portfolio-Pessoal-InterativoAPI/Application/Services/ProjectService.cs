@@ -33,19 +33,36 @@ namespace Application.Services
 
         public async Task<List<ProjectDTO>> GetAllProjectsAsync()
         {
-            var projetos = await _projectRepository.GetProjectsAsync();
+            var projectListDTO = new List<ProjectDTO>();
+            var projectList = await _projectRepository.GetProjectsAsync();
+            foreach (var project in projectList)
+            {
+                projectListDTO.Add(_mapper.Map<ProjectDTO>(project));
+            }
 
-            throw new NotImplementedException("Não implementado serviço para buscar projetos");
+            return projectListDTO;
         }
 
-        public Task<ProjectDTO> GetProjectByIdAsync(Guid id)
+        public async Task<ProjectDTO> GetProjectByIdAsync(Guid id)
         {
-            throw new NotImplementedException("Função para buscar por id ainda não implementado");
+            var project = await _projectRepository.GetProjectByIdAsync(id);
+            var projectDTO = _mapper.Map<ProjectDTO>(project);
+            return projectDTO;
         }
 
-        public Task<ProjectDTO> UpdateProjectAsync(Guid id, ProjectUpdateCommand request)
+        public async Task<ProjectDTO> UpdateProjectAsync(ProjectUpdateCommand request)
         {
-            throw new NotImplementedException("Função para editar projeto por id ainda não implementado");
+            var project = await _projectRepository.GetProjectByIdAsync(request.Id);
+
+            //pensar em uma forma melhor de realizar esse update
+            project.Name = request.Name;
+            project.Description = request.Description;
+            project.UrlGit = request.UrlGit;
+            project.Tags = request.Tags;
+            project.UpdatedAt = request.UpdatedAt;
+
+            var projectDTO = _mapper.Map<ProjectDTO>(await _projectRepository.UpdateProjectAsync(project));
+            return projectDTO;
         }
 
         public Task DeleteProjectAsync(Guid id)

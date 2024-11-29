@@ -27,19 +27,22 @@ namespace Infra.Repository
             throw new NotImplementedException();
         }
 
-        public Task<Project> GetProjectByIdAsync(Guid id)
+        public async Task<Project> GetProjectByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _context.Projects.SingleOrDefaultAsync(e => e.Id == id);
         }
 
-        public Task<List<Project>> GetProjectsAsync()
+        public async Task<List<Project>> GetProjectsAsync()
         {
-            throw new NotImplementedException("Entrou no repository");
+            return await _context.Projects.ToListAsync();
         }
 
-        public Task<Project> UpdateProjectAsync(Guid id, Project project)
+        public async Task<Project> UpdateProjectAsync(Project project)
         {
-            throw new NotImplementedException();
+            var updatedProject = _context.Projects.Update(project);
+            await _context.SaveChangesAsync();
+
+            return await _context.Projects.SingleOrDefaultAsync(e => e.Id == project.Id);
         }
     }
 }
