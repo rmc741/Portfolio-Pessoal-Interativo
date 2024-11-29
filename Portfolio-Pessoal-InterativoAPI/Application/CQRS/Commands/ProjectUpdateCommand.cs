@@ -7,6 +7,9 @@ namespace Application.CQRS.Commands
     public class ProjectUpdateCommand
     {
         [Required]
+        public Guid Id { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
         [Required]
@@ -16,9 +19,11 @@ namespace Application.CQRS.Commands
         [Required]
         public string UrlGit { get; set; }
         public HashSet<string> Tags { get; set; } = new();
-        public List<ImageDTO>? ImagesList { get; set; } = new();
 
         [JsonIgnore]
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreateddAt { get; set; }
+
+        [JsonIgnore]
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
     }
 }
