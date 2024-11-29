@@ -8,7 +8,7 @@ namespace Application.Interfaces.Services
         Task<List<ProjectDTO>> GetAllProjectsAsync();
         Task<ProjectDTO> GetProjectByIdAsync(Guid id);
         Task<ProjectDTO> CreateNewProject(ProjectCreateCommand projectDTO);
-        Task<ProjectDTO> UpdateProjectAsync(Guid id, ProjectUpdateCommand projectDTO);
+        Task<ProjectDTO> UpdateProjectAsync(ProjectUpdateCommand projectDTO);
         Task DeleteProjectAsync(Guid id);
     }
 }

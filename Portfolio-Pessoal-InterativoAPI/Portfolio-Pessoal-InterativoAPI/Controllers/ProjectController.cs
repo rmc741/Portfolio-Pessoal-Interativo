@@ -38,9 +38,9 @@ namespace Portfolio_Pessoal_InterativoAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProject(Guid id, [FromBody] ProjectUpdateCommand request)
+        public async Task<IActionResult> UpdateProject([FromBody] ProjectUpdateCommand request)
         {
-            var result = await _projectHandler.UpdateProjectHandler(id, request);
+            var result = await _projectHandler.UpdateProjectHandler( request);
             return Ok(result);
         }
     }

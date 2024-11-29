@@ -48,9 +48,9 @@ namespace Application.Handlers
             return await _projectService.GetProjectByIdAsync(id);
         }
 
-        public Task<ProjectDTO> UpdateProjectHandler(Guid id, ProjectUpdateCommand request)
+        public Task<ProjectDTO> UpdateProjectHandler(ProjectUpdateCommand request)
         {
-            return _projectService.UpdateProjectAsync(id, request);
+            return _projectService.UpdateProjectAsync(request);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Domain.Interface.Repository
         Task<Project> CreateNewProjectAsync(Project project);
         Task<List<Project>> GetProjectsAsync();
         Task<Project> GetProjectByIdAsync(Guid id);
-        Task<Project> UpdateProjectAsync(Guid id, Project project);
+        Task<Project> UpdateProjectAsync(Project project);
         Task DeleteProjectAsync(Guid id);
     }
 }
