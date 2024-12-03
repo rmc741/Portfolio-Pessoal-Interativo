@@ -22,9 +22,10 @@ namespace Infra.Repository
             return savedProject;
         }
 
-        public Task DeleteProjectAsync(Guid id)
+        public async Task DeleteProjectById(Project project)
         {
-            throw new NotImplementedException();
+            _context.Projects.Remove(project);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<Project> GetProjectByIdAsync(Guid id)
