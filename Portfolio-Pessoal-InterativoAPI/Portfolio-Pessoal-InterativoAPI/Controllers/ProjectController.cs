@@ -43,5 +43,12 @@ namespace Portfolio_Pessoal_InterativoAPI.Controllers
             var result = await _projectHandler.UpdateProjectHandler( request);
             return Ok(result);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> RemoveProject(Guid id)
+        {
+            await _projectHandler.DeleteProjectHandler(id);
+            return NoContent();
+        }
     }
 }
