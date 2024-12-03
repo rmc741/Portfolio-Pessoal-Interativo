@@ -25,10 +25,9 @@ namespace Application.Services
 
         public async Task<ProjectDTO> CreateNewProject(ProjectCreateCommand request)
         {
-            var projectDTO = _mapper.Map<ProjectDTO>(request);
-            var project = _mapper.Map<Project>(projectDTO);
-            var newProject = _mapper.Map<ProjectDTO>(await _projectRepository.CreateNewProjectAsync(project));
-            return newProject;
+            var project = _mapper.Map<Project>(request);
+            var newProject = await _projectRepository.CreateNewProjectAsync(project);
+            return _mapper.Map<ProjectDTO>(newProject);
         }
 
         public async Task<List<ProjectDTO>> GetAllProjectsAsync()
@@ -45,29 +44,26 @@ namespace Application.Services
 
         public async Task<ProjectDTO> GetProjectByIdAsync(Guid id)
         {
-            var project = await _projectRepository.GetProjectByIdAsync(id);
+            var project = await _projectRepository.GetProjectByIdAsync(id) ?? throw new DirectoryNotFoundException("Project not found");
             var projectDTO = _mapper.Map<ProjectDTO>(project);
             return projectDTO;
         }
 
         public async Task<ProjectDTO> UpdateProjectAsync(ProjectUpdateCommand request)
         {
-            var project = await _projectRepository.GetProjectByIdAsync(request.Id);
-
-            //pensar em uma forma melhor de realizar esse update
-            project.Name = request.Name;
-            project.Description = request.Description;
-            project.UrlGit = request.UrlGit;
-            project.Tags = request.Tags;
+            var project = await _projectRepository.GetProjectByIdAsync(request.Id) ?? throw new DirectoryNotFoundException("Project not found");
+            _mapper.Map(request, project);
             project.UpdatedAt = request.UpdatedAt;
 
-            var projectDTO = _mapper.Map<ProjectDTO>(await _projectRepository.UpdateProjectAsync(project));
-            return projectDTO;
+            var updatedProject = await _projectRepository.UpdateProjectAsync(project);
+            return _mapper.Map<ProjectDTO>(updatedProject);
         }
 
-        public Task DeleteProjectAsync(Guid id)
+        public async Task DeleteProjectById(Guid id)
         {
-            throw new NotImplementedException("Função para remover projeto ainda n implementado");
+            Project project = await _projectRepository.GetProjectByIdAsync(id) ?? throw new DirectoryNotFoundException("Project not found");
+            await _projectRepository.DeleteProjectById(project);
+
         }
     }
 }
