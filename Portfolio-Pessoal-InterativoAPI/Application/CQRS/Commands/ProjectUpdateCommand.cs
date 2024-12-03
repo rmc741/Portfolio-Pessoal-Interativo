@@ -1,5 +1,4 @@
-﻿using Application.DTOs;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace Application.CQRS.Commands
@@ -24,6 +23,6 @@ namespace Application.CQRS.Commands
         public DateTime CreateddAt { get; set; }
 
         [JsonIgnore]
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }
