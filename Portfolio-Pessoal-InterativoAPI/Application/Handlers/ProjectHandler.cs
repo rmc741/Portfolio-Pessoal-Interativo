@@ -35,7 +35,7 @@ namespace Application.Handlers
 
         public async Task DeleteProjectHandler(Guid id)
         {
-            await _projectService.DeleteProjectAsync(id);
+            await _projectService.DeleteProjectById(id);
         }
 
         public async Task<List<ProjectDTO>> GetAllProjectsHandler()

@@ -8,6 +8,6 @@ namespace Domain.Interface.Repository
         Task<List<Project>> GetProjectsAsync();
         Task<Project> GetProjectByIdAsync(Guid id);
         Task<Project> UpdateProjectAsync(Project project);
-        Task DeleteProjectAsync(Guid id);
+        Task DeleteProjectById(Project project);
     }
 }
