@@ -2,6 +2,7 @@
 using Application.Interfaces.Handlers;
 using Application.Interfaces.Services;
 using Application.Mappings;
+using Application.Services;
 using Domain.Interface.Repository;
 using Infra.Context;
 using Infra.Repository;
