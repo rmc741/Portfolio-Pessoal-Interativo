@@ -5,45 +5,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Repository
 {
-    public class ProjectRepository : IProjectRepository
+    public class ProjectRepository : GenericRepository<Project>, IProjectRepository
     {
-        private ApplicationDbContext _context;
-
-        public ProjectRepository(ApplicationDbContext context)
+        public ProjectRepository(ApplicationDbContext context) : base(context)
         {
-            _context = context;
         }
 
-        public async Task<Project> CreateNewProjectAsync(Project project)
-        {
-            await _context.AddAsync(project);
-            await _context.SaveChangesAsync();
-            var savedProject = await _context.Projects.Where(d => project.Id == d.Id).FirstOrDefaultAsync();
-            return savedProject;
-        }
+        // Adicione aqui métodos específicos para a entidade Project, se necessário
+        //EXEMPLO:
+        //public async Task<List<Project>> GetProjectsByCategoryAsync(string category)
+        //{
+        //    return await _dbSet.Where(p => p.Category == category).ToListAsync();
+        //}
 
-        public async Task DeleteProjectById(Project project)
-        {
-            _context.Projects.Remove(project);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task<Project> GetProjectByIdAsync(Guid id)
-        {
-            return await _context.Projects.SingleOrDefaultAsync(e => e.Id == id);
-        }
-
-        public async Task<List<Project>> GetProjectsAsync()
-        {
-            return await _context.Projects.ToListAsync();
-        }
-
-        public async Task<Project> UpdateProjectAsync(Project project)
-        {
-            var updatedProject = _context.Projects.Update(project);
-            await _context.SaveChangesAsync();
-
-            return await _context.Projects.SingleOrDefaultAsync(e => e.Id == project.Id);
-        }
     }
 }

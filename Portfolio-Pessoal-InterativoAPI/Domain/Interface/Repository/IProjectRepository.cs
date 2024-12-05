@@ -2,12 +2,10 @@
 
 namespace Domain.Interface.Repository
 {
-    public interface IProjectRepository
+    public interface IProjectRepository : IGenericRepository<Project>
     {
-        Task<Project> CreateNewProjectAsync(Project project);
-        Task<List<Project>> GetProjectsAsync();
-        Task<Project> GetProjectByIdAsync(Guid id);
-        Task<Project> UpdateProjectAsync(Project project);
-        Task DeleteProjectById(Project project);
+        // Adicione métodos específicos para Project, se necessário.
+        // Exemplo:
+        // Task<List<Project>> GetProjectsByCategoryAsync(string category);
     }
 }
