@@ -2,7 +2,6 @@
 using Application.Interfaces.Handlers;
 using Application.Interfaces.Services;
 using Application.Mappings;
-using Application.Services;
 using Domain.Interface.Repository;
 using Infra.Context;
 using Infra.Repository;
@@ -22,6 +21,8 @@ namespace IoC
 
             services.AddScoped<IProjectHandler, ProjectHandler>();
             services.AddScoped<IProjectService, ProjectService>();
+
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IProjectRepository, ProjectRepository>();
 
             services.AddAutoMapper(typeof(MappingProfile));
