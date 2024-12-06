@@ -19,24 +19,28 @@ namespace Portfolio_Pessoal_InterativoAPI.Controllers
         [HttpPost("{projectId}")]
         public async Task<IActionResult> CreateNewComment(Guid projectId, CommentCreateCommand commentCommand)
         {
-            return Ok();
+            var result = await _commentHandler.CreateNewCommentHandler(commentCommand);
+            return Ok(result);
         }
 
         [HttpGet("{projectId}")]
         public async Task<IActionResult> GetCommentsByProjectId(Guid projectId)
         {
-            return Ok();
+            var result = await _commentHandler.GetAllCommentsByProjectIdHandler(projectId);
+            return Ok(result);
         }
 
         [HttpPut("{commnetId}")]
         public async Task<IActionResult> UpdateCommentById([FromBody]CommentUpdateCommand commentCommand)
         {
-            return Ok();
+            var result = await _commentHandler.UpdateCommentHandler(commentCommand);
+            return Ok(result);
         }
 
         [HttpDelete("{commnetId}")]
         public async Task<IActionResult> RemoveCommentById(Guid commnetId)
         {
+            await _commentHandler.DeleteCommentHandler(commnetId);
             return NoContent();
         }
     }
