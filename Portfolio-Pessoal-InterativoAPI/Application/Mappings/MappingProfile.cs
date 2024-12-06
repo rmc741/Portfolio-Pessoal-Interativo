@@ -21,6 +21,20 @@ namespace Application.Mappings
 
             CreateMap<ProjectCreateCommand, ProjectDTO>().ReverseMap();
             CreateMap<ProjectUpdateCommand, ProjectDTO>().ReverseMap();
+
+
+            CreateMap<Comment, CommentDTO>().ReverseMap();
+            CreateMap<CommentUpdateCommand, Comment>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ReverseMap();
+
+            CreateMap<CommentCreateCommand, Comment>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore()) // O ID pode ser gerado no banco
+                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow)) // Se necessário, defina o CreatedAt
+                .ReverseMap();
+
+            CreateMap<CommentCreateCommand, CommentDTO>().ReverseMap();
+            CreateMap<CommentUpdateCommand, CommentDTO>().ReverseMap();
         }
     }
 }
