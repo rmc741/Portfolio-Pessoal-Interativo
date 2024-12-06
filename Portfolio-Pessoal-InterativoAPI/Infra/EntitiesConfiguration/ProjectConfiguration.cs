@@ -22,6 +22,19 @@ namespace Infra.EntitiesConfiguration
             builder.Property(e => e.CreatedAt);
             builder.Property(e => e.UpdatedAt);
 
+            builder
+            .HasMany(e => e.CommentsList)
+            .WithOne(c => c.Project) // Cada comentário pertence a um projeto
+            .HasForeignKey(c => c.ProjectId) // Chave estrangeira
+            .OnDelete(DeleteBehavior.Cascade);
+
+            // Configuração de eager loading automático
+            //Será mesmo necessario?
+            //Se o projeto tiver muitos comentarios?
+            builder.Navigation(e => e.CommentsList)
+                .AutoInclude();
+
+
         }
     }
 }
