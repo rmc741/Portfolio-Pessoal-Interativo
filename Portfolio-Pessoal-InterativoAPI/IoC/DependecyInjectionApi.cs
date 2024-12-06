@@ -26,6 +26,10 @@ namespace IoC
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IProjectRepository, ProjectRepository>();
 
+            services.AddScoped<ICommentHandler, CommentHandler>();
+            services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
+
             services.AddAutoMapper(typeof(MappingProfile));
 
             return services;
