@@ -48,6 +48,11 @@ namespace Application.Handlers
             return await _projectService.GetProjectByIdAsync(id);
         }
 
+        public async Task<ProjectDTO> GetProjectWithCommentsHandler(Guid projectId)
+        {
+            return await _projectService.GetProjectByIdWithComments(projectId);
+        }
+
         public Task<ProjectDTO> UpdateProjectHandler(ProjectUpdateCommand request)
         {
             return _projectService.UpdateProjectAsync(request);

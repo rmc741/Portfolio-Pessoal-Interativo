@@ -47,6 +47,14 @@ public class ProjectService : IProjectService
         return _mapper.Map<ProjectDTO>(project);
     }
 
+    public async Task<ProjectDTO> GetProjectByIdWithComments(Guid id)
+    {
+        var project = await _projectRepository.GetProjectsByIdWithCommentsAsync(id)
+            ?? throw new DirectoryNotFoundException("Project not found");
+
+        return _mapper.Map<ProjectDTO>(project);
+    }
+
     public async Task<ProjectDTO> UpdateProjectAsync(ProjectUpdateCommand request)
     {
         var project = await _projectRepository.GetByIdAsync(request.Id)

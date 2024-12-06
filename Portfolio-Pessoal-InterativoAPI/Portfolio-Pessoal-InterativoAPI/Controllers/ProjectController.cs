@@ -30,6 +30,13 @@ namespace Portfolio_Pessoal_InterativoAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("detalhado/{id}")]
+        public async Task<IActionResult> GetProjectByIdWithComments(Guid id)
+        {
+            var result = await _projectHandler.GetProjectWithCommentsHandler(id);
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateNewProject([FromBody] ProjectCreateCommand request)
         {

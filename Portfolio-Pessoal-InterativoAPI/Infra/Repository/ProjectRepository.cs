@@ -11,6 +11,13 @@ namespace Infra.Repository
         {
         }
 
+        public async Task<Project> GetProjectsByIdWithCommentsAsync(Guid projectId)
+        {
+            return await _context.Projects
+                .Include(e => e.CommentsList)
+                .FirstOrDefaultAsync(e => e.Id == projectId);
+        }
+
         // Adicione aqui métodos específicos para a entidade Project, se necessário
         //EXEMPLO:
         //public async Task<List<Project>> GetProjectsByCategoryAsync(string category)

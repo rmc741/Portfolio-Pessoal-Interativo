@@ -6,6 +6,6 @@ namespace Domain.Interface.Repository
     {
         // Adicione métodos específicos para Project, se necessário.
         // Exemplo:
-        // Task<List<Project>> GetProjectsByCategoryAsync(string category);
+        Task<Project> GetProjectsByIdWithCommentsAsync(Guid projectId);
     }
 }

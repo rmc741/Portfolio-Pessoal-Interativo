@@ -10,5 +10,6 @@ namespace Application.Interfaces.Services
         Task<ProjectDTO> CreateNewProject(ProjectCreateCommand projectDTO);
         Task<ProjectDTO> UpdateProjectAsync(ProjectUpdateCommand projectDTO);
         Task DeleteProjectById(Guid id);
+        Task<ProjectDTO> GetProjectByIdWithComments(Guid projectId);
     }
 }
