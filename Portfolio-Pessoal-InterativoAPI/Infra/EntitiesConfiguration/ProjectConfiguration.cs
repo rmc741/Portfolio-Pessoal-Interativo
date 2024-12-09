@@ -28,13 +28,6 @@ namespace Infra.EntitiesConfiguration
             .HasForeignKey(c => c.ProjectId) // Chave estrangeira
             .OnDelete(DeleteBehavior.Cascade);
 
-            // Configuração de eager loading automático
-            //Será mesmo necessario?
-            //Se o projeto tiver muitos comentarios?
-            builder.Navigation(e => e.CommentsList)
-                .AutoInclude();
-
-
         }
     }
 }
