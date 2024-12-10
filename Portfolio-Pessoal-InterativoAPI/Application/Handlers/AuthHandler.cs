@@ -13,9 +13,9 @@ namespace Application.Handlers
             _authService = authService;
         }
 
-        public Task<TokenDTO> Login(LoginDTO loginRequest)
+        public async Task<TokenDTO> Login(LoginDTO loginRequest)
         {
-            throw new NotImplementedException();
+            return await _authService.Login(loginRequest);
         }
     }
 }
