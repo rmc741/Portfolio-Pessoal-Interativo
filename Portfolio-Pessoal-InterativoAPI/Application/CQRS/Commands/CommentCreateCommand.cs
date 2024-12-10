@@ -6,7 +6,8 @@ namespace Application.CQRS.Commands
     {
         [Required]
         public Guid ProjectId { get; set; }
-        //public Guid UserId { get; set; }
+        [Required]
+        public Guid UserId { get; set; }
 
         [Required]
         public string Content { get; set; }
