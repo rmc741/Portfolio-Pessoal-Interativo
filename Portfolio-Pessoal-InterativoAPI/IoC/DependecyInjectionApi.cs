@@ -20,15 +20,19 @@ namespace IoC
              options.UseNpgsql(configuration.GetConnectionString("PortfolioDatabase"),
              b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
             services.AddScoped<IProjectHandler, ProjectHandler>();
             services.AddScoped<IProjectService, ProjectService>();
-
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IProjectRepository, ProjectRepository>();
 
             services.AddScoped<ICommentHandler, CommentHandler>();
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<ICommentRepository, CommentRepository>();
+
+            services.AddScoped<IAuthHandler, AuthHandler>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAuthRepositorty, AuthRepositorty>();
 
             services.AddAutoMapper(typeof(MappingProfile));
 
