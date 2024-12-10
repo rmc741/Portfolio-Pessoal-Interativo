@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities
+﻿using System.Security.Principal;
+
+namespace Domain.Entities
 {
     public class User
     {
@@ -12,5 +14,8 @@
         public bool IsActive { get; set; }
 
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+
+        public Guid RoleId { get; set; }
+        public Role Role { get; set; } 
     }
 }
