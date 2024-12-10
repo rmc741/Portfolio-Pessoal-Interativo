@@ -16,12 +16,16 @@ namespace Infra.EntitiesConfiguration
             builder.Property(e => e.CreatedAt);
             builder.Property(e => e.UpdatedAt);
 
-            // Configuração da chave estrangeira
             builder
-                .HasOne(c => c.Project) // Relacionamento com Project
-                .WithMany(p => p.CommentsList) // Um Project pode ter muitos comentários
-                .HasForeignKey(c => c.ProjectId) // Especifica a chave estrangeira
+                .HasOne(c => c.Project) 
+                .WithMany(p => p.CommentsList)
+                .HasForeignKey(c => c.ProjectId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne<User>() 
+           .WithMany(u => u.Comments)
+           .HasForeignKey(c => c.UserId)
+           .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }
