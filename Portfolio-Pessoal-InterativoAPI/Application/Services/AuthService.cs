@@ -13,10 +13,17 @@ namespace Application.Services
     public class AuthService : IAuthService
     {
         private readonly IAuthRepositorty _authRepository;
+        private readonly string _secretKey;
+        private readonly string _issuer;
+        private readonly string _audience;
 
-        public AuthService(IAuthRepositorty authRepository)
+        public AuthService(IAuthRepositorty authRepository, string secretKey,
+            string issuer, string audience)
         {
             _authRepository = authRepository;
+            _secretKey = secretKey;
+            _issuer = issuer;
+            _audience = audience;
         }
 
         public async Task<TokenDTO> Login(LoginDTO loginRequest)
@@ -36,14 +43,14 @@ namespace Application.Services
             //declarações do usuário
             var claims = new[]
             {
-            new Claim("email", userInfo.Email),
+            new Claim("email", user.Email),
             new Claim("meuvalor", "oque voce quiser"),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 
             //gerar chave privada para assinar o token
             var privateKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]));
+                Encoding.UTF8.GetBytes(_secretKey));
 
             //gerar a assinatura digital
             var credentials = new SigningCredentials(privateKey, SecurityAlgorithms.HmacSha256);
@@ -54,9 +61,9 @@ namespace Application.Services
             //gerar o token
             JwtSecurityToken token = new JwtSecurityToken(
                 //emissor
-                issuer: _configuration["Jwt:Issuer"],
+                issuer: _issuer,
                 //audiencia
-                audience: _configuration["Jwt:Audience"],
+                audience: _audience,
                 //claims
                 claims: claims,
                 //data de expiracao
@@ -67,8 +74,8 @@ namespace Application.Services
 
             return new TokenDTO()
             {
-                Token = new JwtSecurityTokenHandler().WriteToken(token),
-                Expiration = expiration
+                AccessToken = new JwtSecurityTokenHandler().WriteToken(token),
+                ExpiresIn = expiration
             };
         }
 
