@@ -5,6 +5,7 @@ using Application.Mappings;
 using Application.Services;
 using Domain.Interface.Repository;
 using Infra.Context;
+using Infra.Options;
 using Infra.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -30,8 +31,13 @@ namespace IoC
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<ICommentRepository, CommentRepository>();
 
+            services.AddScoped<IAuthService>(provider =>
+            {
+                var iAuthProvider = provider.GetService<IAuthRepositorty>();
+                var securityOptions = provider.GetService<SecurityOptions>();
+                return new AuthService(iAuthProvider, securityOptions.SecretKey, securityOptions.Issuer, securityOptions.Audience);
+            });
             services.AddScoped<IAuthHandler, AuthHandler>();
-            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IAuthRepositorty, AuthRepositorty>();
 
             services.AddAutoMapper(typeof(MappingProfile));
@@ -41,6 +47,13 @@ namespace IoC
 
         public static IServiceCollection AddOptionsApi(this IServiceCollection services, IConfiguration configuration)
         {
+            services.Configure<SecurityOptions>(options =>
+            {
+                options.Issuer = configuration["Jwt:Issuer"];
+                options.Audience = configuration["Jwt:Audience"];
+                options.SecretKey = configuration["Jwt:SecretKey"];
+            });
+
             return services;
         }
     }
