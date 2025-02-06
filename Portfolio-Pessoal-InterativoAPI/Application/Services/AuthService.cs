@@ -45,7 +45,7 @@ namespace Application.Services
             {
             new Claim("email", user.Email),
             new Claim("meuvalor", "oque voce quiser"),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            //new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 
             //gerar chave privada para assinar o token
