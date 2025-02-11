@@ -3,6 +3,7 @@ using System;
 using Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250211002152_NewPropertieRole")]
+    partial class NewPropertieRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,9 +120,8 @@ namespace Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Type")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -128,18 +130,8 @@ namespace Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1a75624c-a600-4dd2-a0c9-b80c3707fd06"),
-                            Type = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = new Guid("45e9f23c-8793-4d9d-9943-3ee08a995ab8"),
-                            Type = "USER"
-                        },
-                        new
-                        {
-                            Id = new Guid("924952ef-c556-45ad-8728-760fe333d37a"),
-                            Type = "MANAGER"
+                            Id = new Guid("4c1e031a-631a-401a-953e-e867ed8f8ce1"),
+                            Type = 0
                         });
                 });
 

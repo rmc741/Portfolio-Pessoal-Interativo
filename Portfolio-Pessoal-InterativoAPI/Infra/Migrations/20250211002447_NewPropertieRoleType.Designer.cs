@@ -3,6 +3,7 @@ using System;
 using Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250211002447_NewPropertieRoleType")]
+    partial class NewPropertieRoleType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,9 +120,8 @@ namespace Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Type")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -128,18 +130,18 @@ namespace Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1a75624c-a600-4dd2-a0c9-b80c3707fd06"),
-                            Type = "ADMIN"
+                            Id = new Guid("2d45b517-b33f-4e7a-959a-3eeb188f0d3e"),
+                            Type = 0
                         },
                         new
                         {
-                            Id = new Guid("45e9f23c-8793-4d9d-9943-3ee08a995ab8"),
-                            Type = "USER"
+                            Id = new Guid("5b6ffe16-4c3b-4413-a82b-1698210b889b"),
+                            Type = 1
                         },
                         new
                         {
-                            Id = new Guid("924952ef-c556-45ad-8728-760fe333d37a"),
-                            Type = "MANAGER"
+                            Id = new Guid("6598d88b-de4c-4573-89ce-820d2fb37e06"),
+                            Type = 2
                         });
                 });
 
