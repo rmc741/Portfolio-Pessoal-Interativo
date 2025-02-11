@@ -9,6 +9,6 @@ namespace Domain.Entities
     public class Role
     {
         public Guid Id { get; set; }
-        public string Type { get; set; }
+        public RoleTypeEnum Type { get; set; }
     }
 }
