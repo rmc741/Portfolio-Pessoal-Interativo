@@ -128,17 +128,17 @@ namespace Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1a75624c-a600-4dd2-a0c9-b80c3707fd06"),
+                            Id = new Guid("8598ef03-7770-4df6-a91e-80c73f69a991"),
                             Type = "ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("45e9f23c-8793-4d9d-9943-3ee08a995ab8"),
+                            Id = new Guid("e3c6ab99-0ca4-45a7-80fd-a7c4e9887beb"),
                             Type = "USER"
                         },
                         new
                         {
-                            Id = new Guid("924952ef-c556-45ad-8728-760fe333d37a"),
+                            Id = new Guid("9df8c416-3551-4960-a122-e9af57a58559"),
                             Type = "MANAGER"
                         });
                 });

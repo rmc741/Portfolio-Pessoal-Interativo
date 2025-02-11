@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250211002447_NewPropertieRoleType")]
-    partial class NewPropertieRoleType
+    [Migration("20250211225313_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -120,8 +120,9 @@ namespace Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("integer");
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -130,18 +131,18 @@ namespace Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("2d45b517-b33f-4e7a-959a-3eeb188f0d3e"),
-                            Type = 0
+                            Id = new Guid("8598ef03-7770-4df6-a91e-80c73f69a991"),
+                            Type = "ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("5b6ffe16-4c3b-4413-a82b-1698210b889b"),
-                            Type = 1
+                            Id = new Guid("e3c6ab99-0ca4-45a7-80fd-a7c4e9887beb"),
+                            Type = "USER"
                         },
                         new
                         {
-                            Id = new Guid("6598d88b-de4c-4573-89ce-820d2fb37e06"),
-                            Type = 2
+                            Id = new Guid("9df8c416-3551-4960-a122-e9af57a58559"),
+                            Type = "MANAGER"
                         });
                 });
 
