@@ -1,0 +1,78 @@
+  header {
+      background-color: #333;
+      padding: 15px 20px;
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+  }
+
+  /* Logo */
+  .logo {
+      font-size: 24px;
+      font-weight: bold;
+  }
+
+  /* Menu */
+  .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+  }
+
+  .nav-links li {
+      display: inline;
+  }
+
+  .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      transition: 0.3s;
+  }
+
+  .nav-links a:hover {
+      color: #f4a261;
+  }
+
+  /* Menu Hamburguer (para mobile) */
+  .menu-toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+  }
+
+  /* Responsivo para telas menores */
+  @media screen and (max-width: 768px) {
+      .nav-links {
+          display: none;
+          flex-direction: column;
+          background-color: #333;
+          position: absolute;
+          top: 60px;
+          right: 0;
+          width: 100%;
+          text-align: center;
+          padding: 10px 0;
+          z-index: 9999;
+      }
+
+      .nav-links.active {
+          display: flex;
+      }
+
+      .menu-toggle {
+          display: block;
+      }
+  }

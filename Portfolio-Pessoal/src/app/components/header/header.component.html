@@ -1,0 +1,15 @@
+<header>
+    <div class="container">
+      <a href="/">
+          <h1 class="logo">Meu Portfólio</h1>
+      </a>
+      <nav>
+        <ul class="nav-links" [class.active]="isMenuOpen">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">Sobre</a></li>
+          <li><a href="/contact">Contato</a></li>
+        </ul>
+        <div class="menu-toggle" (click)="toggleMenu()">☰</div>
+      </nav>
+    </div>
+  </header>  

@@ -1,0 +1,12 @@
+.home-page-container {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* 100% da altura da tela */
+    background-color: #e63946; /* Cor forte (vermelho claro) */
+    color: white; /* Cor do texto */
+    font-size: 2rem; /* Tamanho da fonte */
+    font-weight: bold; /* Peso da fonte */
+    text-align: center; /* Centraliza o texto */
+  }
+  

@@ -1,0 +1,44 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Melhorias na tipografia */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f8f8;
+  }
+  
+  /* Ajuste para imagens responsivas */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Removendo estilos padrões de listas */
+  ul, ol {
+    list-style: none;
+  }
+  
+  /* Resetando links */
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Definindo um padrão para botões */
+  button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  /* Corrigindo comportamento do HTML */
+  html {
+    scroll-behavior: smooth;
+  }  
