@@ -8,5 +8,6 @@
     font-size: 2rem; /* Tamanho da fonte */
     font-weight: bold; /* Peso da fonte */
     text-align: center; /* Centraliza o texto */
+    flex-direction: column;
   }
   
